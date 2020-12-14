@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "70bac7f5-e36a-4ebf-a46f-0c3ea96699e1",
+		"name": "demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "demo测试",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d83ab4eb-9cee-4a7a-97cd-5afb458c11e9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"success\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://10.66.136.174:8081/case/demo",
+					"protocol": "http",
+					"host": [
+						"10",
+						"66",
+						"136",
+						"174"
+					],
+					"port": "8081",
+					"path": [
+						"case",
+						"demo"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
