@@ -1,8 +1,12 @@
-node {
+node {    
     checkout scm
-    docker.withServer('tcp://121.4.95.12:2375') {
-        docker.image('ccr.ccs.tencentyun.com/zhucan249/api-test').withRun() {
-          
+    stage('Build Docker'){
+        // 构建上传镜像到容器仓库
+
+        def customImage = docker.build("ccr.ccs.tencentyun.com/zhucan249/api-test")
+
+        docker.withServer("tcp://121.4.95.12:2375") {
+            customImage.push()
         }
     }
 }
