@@ -6,19 +6,20 @@
 	},
 	"item": [
 		{
-			"name": "demo测试",
+			"name": "IP查询",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "d83ab4eb-9cee-4a7a-97cd-5afb458c11e9",
+						"id": "43909880-537a-4add-af79-d6e8417dba46",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Body matches string\", function () {",
-							"    pm.expect(pm.response.text()).to.include(\"success\");",
+							"pm.test(\"检验IP地址结果是否为深圳\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.address).include(\"深圳\");",
 							"});"
 						],
 						"type": "text/javascript"
@@ -29,18 +30,26 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://10.66.136.174:8081/case/demo",
-					"protocol": "http",
+					"raw": "https://www.ip.cn/api/index?ip=59.37.125.38&type=1",
+					"protocol": "https",
 					"host": [
-						"10",
-						"66",
-						"136",
-						"174"
+						"www",
+						"ip",
+						"cn"
 					],
-					"port": "8081",
 					"path": [
-						"case",
-						"demo"
+						"api",
+						"index"
+					],
+					"query": [
+						{
+							"key": "ip",
+							"value": "59.37.125.38"
+						},
+						{
+							"key": "type",
+							"value": "1"
+						}
 					]
 				}
 			},
