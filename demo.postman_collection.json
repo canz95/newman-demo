@@ -19,7 +19,7 @@
 							"",
 							"pm.test(\"检验IP地址结果是否为深圳\", function () {",
 							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.address).include(\"深圳\");",
+							"    pm.expect(jsonData.address).include(\"成都\");",
 							"});"
 						],
 						"type": "text/javascript"
